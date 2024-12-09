@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Emlaksite.Models.Ilan>
+    @{ int i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+    var c = 1;
+    var active = i == 1 ? "active" : "";
+    <div class="item @active">
+        @foreach (var rsm in ViewBag.imgs)
+        {
+            if (rsm.IlanID == item.IlanID)
+            {
+                if (@c == 1)
+                {
+                    <a href="/Home/IlanDetay/@item.IlanID"><img src="~/Content/images/@rsm.ResimAd" style="width:1150px;height:420px" /></a>
+                    c++;
+
+                }
+            }
+        }
+    </div>
+
+}

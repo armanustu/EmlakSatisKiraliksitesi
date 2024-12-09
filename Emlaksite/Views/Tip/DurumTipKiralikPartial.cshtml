@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Emlaksite.Models.Tip>
+@foreach (var item in Model)
+{
+    <li><a href="/Tip/Satılıkilanlar/@item.TipID">@item.TipAd</a></li>//kiralık arsa arzazi rezidans,daire isimlerini getiriyoruz menufilterele ile kiralık olan tüm emlak bilgilerini getiriyoruz
+}
+

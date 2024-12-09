@@ -1,0 +1,107 @@
+﻿@model Emlaksite.Models.Tip
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">En az</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="En az(Fiyat)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-4 control-label">En çok</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="En Çok(Fİyat)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-4 control-label">Şehir</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Şehir">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 control-label">Semt</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Semt">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 cont-label">Durum</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Durum">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 control-label">Tip</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Tip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6">
+                        <button imgtype="submit" class="btn btn-primary"><i class="bi bi-search"></i>Filtreleme</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+
+            <div class="thumbnail" style="width:845px">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" aria-current="page"><a href="/Home/Index">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tip</li>
+                    </ol>
+                </nav>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+               
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipAd, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.TipAd, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TipAd, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DurumID, "DurumID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.DropDownList("DurumID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DurumID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Tip oluştur" class="btn btn-success" />
+                        @Html.ActionLink("Tip listesi", "Index", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,120 @@
+﻿@model Emlaksite.Models.Ilan
+<div class="col-md-3">
+    <br/>
+    @using (Html.BeginForm("Filtrele", "Home", FormMethod.Get, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">En az</label>
+            <div class="col-sm-6">
+                <input type="text" name="min" class="form-control" placeholder="En az(Fiyat)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-4 control-label">En çok</label>
+            <div class="col-sm-6">
+                <input type="text" name="max" class="form-control" placeholder="En Çok(Fİyat)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="text" class="col-sm-4 control-label">Şehir</label>
+            <div class="col-sm-6">
+                @if (ViewBag.sehirlist != null)
+                {
+                    @Html.DropDownListFor(model => model.SehirID, ViewBag.sehirlist as SelectList, "Şehir Seç", new { @class = "form-control" })
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="text" class="col-sm-4 control-label">Semt</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.SemtID, new SelectList(""), "Semt sec", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="text" class="col-sm-4 control-label">Mahalle</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.MahalleID, new SelectList(""), "Mahalle sec", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Durum</label>
+            <div class="col-sm-6">
+                @if (ViewBag.durumlist != null)
+                {
+                    @Html.DropDownListFor(m => m.DurumID, ViewBag.durumlist as SelectList, "Durum Seç", new { @class = "form-control" })
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="text" class="col-sm-4 control-label">Tip</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.TipID, new SelectList(""), "Tip Seç", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="text" class="col-sm-4 control-label"></label>
+            <div class="col-sm-6">
+                <button imgtype="submit" class="btn btn-primary"><i class="bi bi-search"></i>Filtreleme</button>
+            </div>
+        </div>
+    
+}
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#SehirID").change(function () {
+                var sehirID = $(this).val();
+                //debugger
+                $.ajax({
+                    type: "Post",
+                    url: "/Ilan/SemtGetir?SehirID=" + sehirID,
+                    contentType: "html",
+                    success: function (response) {
+                        //debugger
+                        $("#SemtID").empty();
+                        $("#SemtID").append(response);
+                    }
+                })
+
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#SemtID").change(function () {
+                var semtID = $(this).val();
+                //debugger
+                $.ajax({
+                    type: "Post",
+                    url: "/Ilan/MahalleGetir?SemtID=" + semtID,
+                    contentType: "html",
+                    success: function (response) {
+                        //debugger
+                        $("#MahalleID").empty();
+                        $("#MahalleID").append(response);
+                    }
+                })
+
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#DurumID").change(function () {
+                var durumID = $(this).val();
+                //debugger
+                $.ajax({
+                    type: "Post",
+                    url: "/Ilan/TipGetir?DurumID=" + durumID,
+                    contentType: "html",
+                    success: function (response) {
+                        //debugger
+                        $("#TipID").empty();
+                        $("#TipID").append(response);
+                    }
+                })
+
+            })
+        })
+    </script>

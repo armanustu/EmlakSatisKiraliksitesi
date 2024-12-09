@@ -1,0 +1,97 @@
+﻿@model Emlaksite.Models.Sehir
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">En az</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="En az(Fiyat)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-4 control-label">En çok</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="En Çok(Fİyat)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-4 control-label">Şehir</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Şehir">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 control-label">Semt</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Semt">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 cont-label">Durum</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Durum">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 control-label">Tip</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Tip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6">
+                        <button imgtype="submit" class="btn btn-primary"><i class="bi bi-search"></i>Filtreleme</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            @Html.HiddenFor(m=>m.SehirID)
+            <div class="thumbnail" style="width:845px">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" aria-current="page"><a href="/Home/Index">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sehir ekle</li>
+                    </ol>
+                </nav>
+                <h3>Bu kaydı silmek istediğinizden emin misiniz?</h3>
+                <div>
+                    <h4>Sehir</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SehirAd)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SehirAd)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                            @Html.ActionLink("Sehir", "Index",null, new {@class="btn btn-warning"})
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+

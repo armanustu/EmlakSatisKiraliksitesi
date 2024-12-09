@@ -1,0 +1,127 @@
+﻿@model Emlaksite.Models.Register
+@{
+    ViewBag.Title = "Register";
+
+
+}
+<div class="container">
+    <div class="row">           
+        <div class="col-md-3">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">En az</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="En az(Fiyat)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-4 control-label">En çok</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="En Çok(Fİyat)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-4 control-label">Şehir</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Şehir">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="text" class="col-sm-4 control-label">Semt</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Semt">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="text" class="col-sm-4 cont-label">Durum</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Durum">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="text" class="col-sm-4 control-label">Tip</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Tip">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="text" class="col-sm-4 control-label"></label>
+                            <div class="col-sm-6">
+                                <button imgtype="submit" class="btn btn-primary"><i class="bi bi-search"></i>Filtreleme</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>                 
+        <div class="col-md-9">
+
+            <div class="thumbnail" style="width:845px">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" aria-current="page"><a href="/Home/Index">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Kayıt</li>
+                    </ol>
+                </nav>
+
+
+
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Adı</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">SoyAdı</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Kullanıcı Adı</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Şİfre</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Tekrar şifre</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.RepeatPasword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.RepeatPasword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fade fa-users"
+                                   aria-hidden="true"></i>Kayıt ol
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+   
+</div>
+</div>

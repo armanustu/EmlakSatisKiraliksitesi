@@ -1,0 +1,26 @@
+﻿@model Emlaksite.Models.Durum
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <h4>Durum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DurumAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurumAd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DurumID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

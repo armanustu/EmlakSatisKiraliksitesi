@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Emlaksite.Models.Tip>
+@{
+    ViewBag.Title = "DurumTipPartial2";
+}
+@foreach (var item in Model)
+{
+    <li><a href="/Home/MenuFiltrele/@item.TipID">@item.TipAd</a></li>//Kiralık arsa arzazi rezidans,daire isimlerini getiriyoruz menufilterele ile kiralık olan tüm emlak bilgilerini getiriyoruz
+}
+
+
